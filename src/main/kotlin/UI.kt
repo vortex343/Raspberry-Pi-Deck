@@ -18,9 +18,10 @@ import kotlinx.coroutines.launch
 @Preview
 fun App() {
     val actions = arrayOf(
-        arrayOf("boot", "shutdown"),
-        arrayOf("mute", "steam")
-    )
+        arrayOf("media_back", "media_play", "media_forward"),
+        arrayOf("rgb_up", "rgb_down"),
+        arrayOf("boot", "leave"),
+        )
 
     MaterialTheme {
         Column(
@@ -30,8 +31,8 @@ fun App() {
         ) {
             actions.forEach { actions ->
                 Row (
-                    modifier = Modifier.padding(6.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    modifier = Modifier.padding(8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     actions.forEach { action ->
