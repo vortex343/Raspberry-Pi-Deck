@@ -18,13 +18,16 @@ data class ActionPayload(val action: String)
 
 suspend fun sendAction(action: String) {
     val payload = ActionPayload(action)
-    val address = "http://localhost:5001/trigger"
 
-    val response: String = client.post(address) {
+    val response: String = client.post(HTTPADRESS) {
         contentType(io.ktor.http.ContentType.Application.Json)
         setBody(payload)
     }.body() // read response body as a string
 
     println("Response:\n$response")
+}
+
+fun boot() {
+    ProcessBuilder("bash", "-c", "wakeonlan $MACADRESS").start().waitFor()
 }
 

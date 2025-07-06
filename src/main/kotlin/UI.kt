@@ -21,6 +21,10 @@ fun App() {
             verticalArrangement = Arrangement.spacedBy(12.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Button(onClick = { scope.launch { boot() } }) {
+                Text("Boot")
+            }
+
             actions.forEach { action ->
                 Button(onClick = {
                     scope.launch {
