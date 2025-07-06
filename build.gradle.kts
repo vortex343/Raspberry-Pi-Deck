@@ -46,4 +46,13 @@ compose.desktop {
             packageVersion = "1.0.0"
         }
     }
+
+    tasks.jar {
+        manifest {
+            attributes["Main-Class"] = "MainKt"
+        }
+
+        from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    }
 }

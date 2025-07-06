@@ -18,12 +18,13 @@ data class ActionPayload(val action: String)
 
 suspend fun sendAction(action: String) {
     val payload = ActionPayload(action)
-    val address = "http://localhost:8080/post"//httpbin in docker container
+    val address = "http://localhost:5001/trigger"
+
     val response: String = client.post(address) {
         contentType(io.ktor.http.ContentType.Application.Json)
         setBody(payload)
     }.body() // read response body as a string
 
-    println("Response from httpbin:\n$response")
+    println("Response:\n$response")
 }
 
