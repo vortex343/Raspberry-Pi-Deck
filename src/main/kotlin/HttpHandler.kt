@@ -16,6 +16,14 @@ val client = HttpClient(CIO) {
 @Serializable
 data class ActionPayload(val action: String)
 
+suspend fun handleAction(action: String){
+    when(action){
+        "boot" -> boot()
+
+        else -> sendAction(action)
+    }
+}
+
 suspend fun sendAction(action: String) {
     val payload = ActionPayload(action)
 
